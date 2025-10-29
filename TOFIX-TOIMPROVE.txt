@@ -1,0 +1,9 @@
+--- ! mancante dopo "BUSINESS GROW" nei mobile devices
+--- hamburger menu open non smooth nei mobile devices
+--- section/id non precisa in "portfolio" link da navbar
+--- storto su mobile iphone xr
+--- clicco su navbar ma non si chiude auto/non funziona se clicco
+--- zoom hover on cards
+
+--- in about me aggiungo perché scegliere me ? e come organizzi il processo di lavoro ?
+

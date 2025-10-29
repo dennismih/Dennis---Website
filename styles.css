@@ -1,0 +1,283 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #DBE4EE;
+}
+
+.intro{
+    text-align: center;
+    color: #3E7CB1;
+    font-family: 'Hoover', sans-serif;
+    font-size: 17px;
+}
+
+.intro-2{
+    text-align: center;
+    color: #F17300;
+    font-family: 'Nippo', sans-serif;
+    font-size: 30px; /*prima 67px*/
+}
+
+.intro-img {
+    display: inline-block;
+    /*margin-left: auto;*/
+    /*margin-right: 7%; quando era a destra*/
+    width: 200px;
+    border-radius: 10%;
+    /*margin-top: 20px;
+    margin-bottom: 20px;*/
+}
+
+.intro-img-container{
+    text-align: center;  
+}
+
+.circle {
+  height: 30px;
+  width: 30px;
+  background-color: #81A4CD;
+  border-radius: 50%;
+  display: inline-block; /* elementi uno accanto all’altro */
+  margin-right: 10px; /* spazio tra i cerchi */
+  margin-bottom: 5px;
+}
+
+.circles-container {
+  padding-left: 17%; /* spazio tra bordo e primo cerchio */
+}
+
+.circles-container_1 {
+  text-align: right;
+  padding-right: 17%; /* spazio tra bordo e cerchio */
+}
+
+
+/* Step 1: prepara i layer per muoversi con transform */
+.intro,
+.circles-container,
+.intro-img-container,
+.circles-container_1,
+.intro-2 {
+  position: relative; /* così i movimenti si applicano sul posto */
+  will-change: transform; /* migliora la performance */
+}
+
+.rights{
+	text-align: center;
+	font-size: 17px;
+	font-family: 'Bevellier', sans-serif;
+	color: #054A91
+}
+
+
+/*NAVBAR*/
+.frosted-glass-navbar {
+  position: fixed;
+  top: 20px; /* distanza dall'alto */
+  left: 50%;
+  transform: translateX(-50%);
+  height: 70px;
+  width: 1000px; /* larghezza fissa */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centra il contenuto della navbar */
+  z-index: 10;
+
+    opacity: 0;                /* nascosta inizialmente */
+  pointer-events: none;      /* non cliccabile */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translate(-50%, -20px); /* spostata un po’ in alto */
+}
+
+/* Sfondo (glass effect) che appare solo dopo scroll */
+.navbar-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Nascondi all'inizio */
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+/* Quando scrolli, appare SOLO lo sfondo */
+.frosted-glass-navbar.visible .navbar-background {
+  opacity: 1;
+}
+
+
+/* Quando diventa visibile */
+.frosted-glass-navbar.visible {
+  opacity: 1;
+  pointer-events: auto;      /* torna cliccabile */
+  transform: translate(-50%, 0);
+}
+
+/* Link */
+.frosted-glass-navbar a {
+  color: #054A91;
+  text-align: center;
+  padding: 7px 14px;
+  text-decoration: none;
+  font-size: 17px;
+  margin-right: 0px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+}
+
+/* Link attivo */
+.frosted-glass-navbar a.active {
+  border: 2px solid #054A91;
+  border-radius: 14px;
+  color:#054A91;
+  background-color: #F17300;
+}
+
+  /*HAMBURGER MENU*/
+  /* --- HAMBURGER MENU --- */
+.hamburger {
+  display: none; /* visibile solo su mobile */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #054A91;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* --- MEDIA QUERY per MOBILE --- */
+@media (max-width: 768px) {
+  .frosted-glass-navbar {
+    width: 90%;
+    justify-content: space-between;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    display: none; /* inizialmente nascosto */
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 12px 12px;
+        padding-bottom: 10px;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 0;
+    width: 70%; /*MODIFICA*/
+    text-align: center;
+  }
+
+  /* Quando il menu è aperto */
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Effetto animazione X sull’hamburger */
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translateY(6px);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-6px);
+  }
+}
+body.no-scroll {
+  overflow: hidden;
+}
+/*FINE NAVBAR*/
+
+.portfolio{
+    text-align: center;
+    color: #3E7CB1;
+    font-family: 'Hoover', sans-serif;
+    font-size: 17px;
+    margin-bottom: 20px; /* spazio tra titolo e cards */
+    /*scroll-margin-top: 70px;*/
+}
+
+.card {
+  height: 400px;
+  width: 300px;
+  /*margin: 20px auto;  centra orizzontalmente */
+  display: flex; /* se vuoi contenuto centrato dentro la card */
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  display: inline-block;
+  vertical-align: top; /* evita allineamento verticale strano */
+}
+
+.cards-container {
+  /*display: flex;
+  flex-direction: column;  impila le card verticalmente */
+  /*align-items: center;     centra orizzontalmente */
+  /*gap: 40px;               spazio uniforme tra le card */
+  /*margin-top: 20px;        distanza dal titolo 
+  width: 100%;*/
+  text-align: center; /* centra le card inline-block */
+  margin-top: 20px;
+}
+
+.card-img {
+    display: inline-block;
+    /*margin-left: auto;*/
+    /*margin-right: 7%; quando era a destra*/
+    /*width: 200px;*/
+    border-radius: 12px;
+    /*margin-top: 20px;
+    margin-bottom: 20px;*/
+}
+
+.card-img-container{
+    padding-top: 20px;
+    text-align: center;  
+}
+
+.card-text{
+    text-align: left;
+    color: #3E7CB1;
+    font-family: 'Hoover', sans-serif;
+    font-size: 7px;
+    padding-left: 30px;
+}
